@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pacmanz</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+///////////// debug function
+///////////////////////////////////////
+var debug_mem_var;
+function memdb(){
+	console.log(new Uint32Array(debug_mem_var.buffer));
+}
+
+
+/////////////////////////////////////1
+
+
+
+function bootstrap_emulate(wasm){
+debug_mem_var= wasm.memory;//debug set
+wasm.get_rom_address();
+}
+
+var funobj = fetch('main.wasm').then(response =>
+  response.arrayBuffer()
+).then(bytes =>
+  WebAssembly.instantiate(bytes)
+).then(results => {
+    results.instance.exports.memory.grow(1); //add one page for ROM memory
+	bootstrap_emulate(results.instance.exports); // bootstrap emulator
+});
+
+
+	</script>
+
+</body>
+</html>

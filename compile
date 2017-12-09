@@ -1,0 +1,4 @@
+clang-5.0 -O1 -c -emit-llvm --target=wasm32 main.c         
+llc main.bc -o main.s                                                                 
+s2wasm main.s -o main.wast
+wasm-as -o main.wasm main.wast
