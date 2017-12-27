@@ -4,36 +4,12 @@
 	<title>pacmanz</title>
 </head>
 <body>
-	<script type="text/javascript">
-
-///////////// debug function
-///////////////////////////////////////
-var debug_mem_var;
-function memdb(){
-	console.log(new Uint32Array(debug_mem_var.buffer));
-}
-
-
-/////////////////////////////////////1
-
-
-
-function bootstrap_emulate(wasm){
-debug_mem_var= wasm.memory;//debug set
-wasm.get_rom_address();
-}
-
-var funobj = fetch('main.wasm').then(response =>
-  response.arrayBuffer()
-).then(bytes =>
-  WebAssembly.instantiate(bytes)
-).then(results => {
-    results.instance.exports.memory.grow(1); //add one page for ROM memory
-	bootstrap_emulate(results.instance.exports); // bootstrap emulator
-});
-
-
+	<script type="text/javascript" src="main.js">
 	</script>
-
+  <style type="text/css">
+    html,body{height: 100%;width:100%;margin: 0px;}
+  </style>
+  <canvas id='video' style="height: 100%;width:50%;"></canvas>
+  <div id="log"></div>
 </body>
 </html>
