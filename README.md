@@ -23,4 +23,4 @@ then:
 2. open index.html
 
 **special thanks:**
-* gabriele sansonetti
+* Gabriele Sansonetti
