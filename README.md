@@ -14,8 +14,8 @@ if the first time:
 3. chmod +x compile
 
 then:
-./compile main main
-./compile z80emu/z80emu z80emu
+1. ./compile main main
+2. ./compile z80emu/z80emu z80emu
 
 
 running: 
