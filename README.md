@@ -22,3 +22,5 @@ then:
 1. place all rom files (not delivered in the project files) in the main folder.
 2. open index.html
 
+**special thanks:**
+* gabriele sansonetti
