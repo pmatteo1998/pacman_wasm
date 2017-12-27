@@ -1,6 +1,0 @@
-clang-5.0 -O1 -c -emit-llvm --target=wasm32 $1.c z80emu -o build/$1.bc
-llc build/$1.bc -o build/$1.s                                                                 
-s2wasm build/$1.s -o build/$1.wast
-sed -i 's/(export "memory" (memory $0))//g' build/$1.wast
-sed -i 's/(memory $0 1)/(import "env" "memory" (memory $mem 1))/g' build/$1.wast 
-wasm-as -o $2.wasm build/$1.wast
